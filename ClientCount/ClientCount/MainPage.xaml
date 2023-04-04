@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="ClientCount.MainPage" BackgroundColor="White"
+             Title="List of Clients">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <StyleSheet Source="/Assets/Styles.css" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Spacing="0" BackgroundColor="#F3F3F2">
+        <ListView x:Name="SearchResult" ItemsSource="{Binding Clients}"
+                  SeparatorVisibility="None" 
+                  HasUnevenRows="True"
+                  SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame StyleClass="framestyle" BackgroundColor="White">
+                            <StackLayout>
+                                <Label StyleClass="labelowner"  Text="Client" />
+                                <Label StyleClass="labellower" Text="{Binding FirstName}"/>
+                                <Label StyleClass="labelowner"  Text="Mobile number"/>
+                                <Label StyleClass="labellower"  Text="{Binding PhoneNumber}"/>
+                            </StackLayout>
+
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <RelativeLayout HeightRequest="90"  BackgroundColor="Transparent">
+            <BoxView Color="#4A6572" HeightRequest="60" x:Name="arrowme"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y,Constant=30}"/>
+            <BoxView CornerRadius="35" HeightRequest="70" WidthRequest="70"
+                        BackgroundColor="#F3F3F2"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0.5,Constant=-35}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y,Constant=0}"/>
+
+            <ImageButton Source="AddButton.png"
+                   x:Name="addbutton"
+                    VerticalOptions="CenterAndExpand" 
+                             WidthRequest="60"
+                             HeightRequest="60"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0.5,Constant=-30}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y,Constant=0}"
+                              BackgroundColor="Transparent"
+                                 Command="{Binding AddClientCommand}"
+                             />
+            <Grid BackgroundColor="Transparent" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0,Constant=20}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y,Constant=45}">
+                <Image x:Name="arrowanim" Source="arrowwhite.png" HeightRequest="24" WidthRequest="24" Grid.Column="0" Grid.Row="0"/>
+                <ImageButton x:Name="notetextanim" Source="notetext.png" HeightRequest="24" WidthRequest="24" Grid.Column="1" Grid.Row="0" Clicked="ImageButton_Clicked" BackgroundColor="Transparent"/>
+            </Grid>
+            <ImageButton x:Name="searchanim" Source="search.png" HeightRequest="24" WidthRequest="24" BackgroundColor="Transparent" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=1,Constant=-44}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y,Constant=45}" Clicked="searchanim_Clicked"/>
+        </RelativeLayout>
+
+    </StackLayout>
+</ContentPage>

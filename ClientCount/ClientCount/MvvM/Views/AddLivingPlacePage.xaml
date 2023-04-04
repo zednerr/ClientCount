@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClientCount.MvvM.Views.AddLivingPlacePage"
+             Title="Add address">
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+            <StyleSheet Source="/Assets/StylesAdd.css" />
+            <Style x:Key="InvalidStyle" TargetType="Entry">
+
+                <Setter Property="TextColor" Value="Red"/>
+
+            </Style>
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <StackLayout>
+        <ScrollView>
+            <StackLayout>
+                
+                
+                <Frame StyleClass="frame_add">
+                        <StackLayout>
+                        <Label Text="Region *" StyleClass="labelowner" HorizontalOptions="Center"/>
+                        <Entry Text="{Binding Region}"/>
+                        </StackLayout>
+                    </Frame>
+            
+                
+                    <Frame StyleClass="frame_add">
+                    <StackLayout>
+                        <Label Text="City *" StyleClass="labelowner" HorizontalOptions="Center"/>
+                    <Entry Text="{Binding City}"/>
+                    </StackLayout>
+                    </Frame>
+                
+                
+                        <Frame StyleClass="frame_add">
+                            <StackLayout>
+                        <Label Text="Street *" StyleClass="labelowner" HorizontalOptions="Center"/>
+                                <Entry Text="{Binding Street}"/>
+                            </StackLayout>
+                        </Frame>
+
+                <Frame StyleClass="frame_add">
+                    <StackLayout>
+                        <Label Text="House number *" StyleClass="labelowner" HorizontalOptions="Center"/>
+                                <Entry Text="{Binding HouseNumber}"/>
+                            </StackLayout>
+                        </Frame>
+
+
+                        <Frame StyleClass="frame_add">
+                            <StackLayout>
+                        <Label Text="Flat number" StyleClass="labelowner" HorizontalOptions="Center"/>
+                                <Entry Text="{Binding FlatNumber}"/>
+                            </StackLayout>
+                        </Frame>
+
+                            
+                        <Frame StyleClass="frame_add">
+                            <StackLayout>
+                        <Label Text="Brand *" StyleClass="labelowner" HorizontalOptions="Center"/>
+                        <Picker SelectedItem="{Binding BrandName}" x:Name="BrandPick"/>
+                            </StackLayout>
+                        </Frame>
+
+
+                        <Frame StyleClass="frame_add">
+                            <StackLayout>
+                        <Label Text="Model *" StyleClass="labelowner" HorizontalOptions="Center"/>
+                        <Picker SelectedItem="{Binding ModelName}" x:Name="ModelPick"/>
+                            </StackLayout>
+                        </Frame>
+
+
+                        <Frame StyleClass="frame_add">
+                            <StackLayout>
+                        <Label Text="Model type *" StyleClass="labelowner" HorizontalOptions="Center"/>
+                                <Entry Text="{Binding TypeModel}"/>
+                            </StackLayout>
+                        </Frame>
+
+
+                        <Frame StyleClass="frame_add">
+                            <StackLayout>
+                        <Label Text="Serial number *" StyleClass="labelowner" HorizontalOptions="Center"/>
+                                <Entry Text="{Binding SerialNumber}"/>
+                            </StackLayout>
+                        </Frame>
+
+
+                        <Frame StyleClass="frame_add">
+                            <StackLayout>
+                        <Label Text="Warranty number" StyleClass="labelowner" HorizontalOptions="Center"/>
+                                <Entry Text="{Binding GuaranteeNumber}"/>
+                            </StackLayout>
+                        </Frame>
+
+
+                        <!--Datepicker for sold date-->
+                <StackLayout StyleClass="StackStyle">
+                    <Frame HeightRequest="70">
+                        <StackLayout>
+                            <Label  StyleClass="labelowner"  HorizontalOptions="Center" Text="Date of sale *"/>
+                            <DatePicker Date="{Binding DateSold}" x:Name="d_l" PropertyChanged="d_l_PropertyChanged" Format="yyyy-MM-dd"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                
+                
+                <StackLayout StyleClass="StackStyle">
+                    <Frame HeightRequest="70">
+                        <StackLayout>
+                            <Label StyleClass="labelowner"  HorizontalOptions="Center" Text="date of commissioning *"/>
+                            <!--Datepicker for exploitation date-->
+                            <DatePicker Date="{Binding DateStartExp}" x:Name="d_u" Format="yyyy-MM-dd"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+
+
+                <Button BackgroundColor="#F9AA33" 
+                         TextColor="White"
+                         StyleClass="button_add"
+                        FontSize="16"
+                        CornerRadius="10"
+                         Text="Add"
+                         Command="{Binding AddLivingPlaceCommand}"
+                            />
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

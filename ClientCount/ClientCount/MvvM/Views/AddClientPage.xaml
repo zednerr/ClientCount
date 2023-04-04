@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="ClientCount.MvvM.Views.AddClientPage"
+             Title="Add client">
+    <ContentPage.Resources>
+             
+        <ResourceDictionary>
+            <StyleSheet Source="/Assets/StylesAdd.css" />
+            <Style x:Key="InvalidStyle" TargetType="Entry">
+
+                <Setter Property="TextColor" Value="Red"/>
+
+            </Style>
+            
+        </ResourceDictionary>
+        
+    </ContentPage.Resources>
+    <ContentPage.Content>
+            
+        <ScrollView>
+            <StackLayout>
+                
+                        <Frame StyleClass="frame_add">
+                            <StackLayout>
+                                <Label Text="Name *" StyleClass="labelowner" HorizontalOptions="Center"/>
+                                <Entry Text="{Binding FirstName}">
+                                    <Entry.Behaviors>
+                                        <xct:TextValidationBehavior
+                                InvalidStyle="{StaticResource InvalidStyle}"
+                                   />
+                                    </Entry.Behaviors>
+                                </Entry>
+                            </StackLayout>
+                        </Frame>
+
+
+                    <Frame StyleClass="frame_add">
+                            <StackLayout>
+                                <Label Text="Surname *" StyleClass="labelowner" HorizontalOptions="Center"/>
+                        <Entry Text="{Binding LastName}">
+                            <Entry.Behaviors>
+                                <xct:TextValidationBehavior
+                                InvalidStyle="{StaticResource InvalidStyle}"
+                                  />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                        </Frame>
+
+
+               
+                    <Frame StyleClass="frame_add">
+                            <StackLayout>
+                                <Label Text="Patronymic" StyleClass="labelowner" HorizontalOptions="Center"/>
+                                <Entry Text="{Binding Patronymic}">
+                                    <Entry.Behaviors>
+                                        <xct:TextValidationBehavior
+                                            InvalidStyle="{StaticResource InvalidStyle}"
+                                        />
+                                    </Entry.Behaviors>
+                                    </Entry>
+                            </StackLayout>
+                    </Frame>
+
+
+                        <Frame StyleClass="frame_add">
+                            <StackLayout>
+                        <Label Text="Mobile number *" StyleClass="labelowner" HorizontalOptions="Center"/>
+                        <Entry Text="{Binding PhoneNumber}" Keyboard="Numeric">
+                            <Entry.Behaviors>
+                                <xct:MaskedBehavior 
+                                    
+                                    Mask="XX(XXX)XXX-XX-XX"
+                                    UnMaskedCharacter="X"
+                                />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                        </Frame>
+
+
+                        <Frame StyleClass="frame_add">
+                            <StackLayout>
+                                <Label Text="Home number" StyleClass="labelowner" HorizontalOptions="Center"/>
+                        <Entry Text="{Binding HphoneNumber}" Keyboard="Numeric">
+                            <Entry.Behaviors>
+                                <xct:MaskedBehavior
+                                   
+                                    Mask="XXX-XX-XX"
+                                    UnMaskedCharacter="X"
+                                    />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                        </Frame>
+
+
+
+
+                <Frame  StyleClass="frame_add">
+                    <StackLayout>
+                        <Label Text="Employee *" StyleClass="labelowner" HorizontalOptions="Center"/>
+                        <Picker ItemsSource="{Binding Employees,Mode=TwoWay}"
+                        ItemDisplayBinding="{Binding LastName}"
+                        SelectedItem="{Binding SelectedEmployee}"/>
+                    </StackLayout>
+                    </Frame>
+               
+    
+    
+    
+                <StackLayout StyleClass="button_add">
+                    <Button StyleClass="buttonstyle"  x:Name="Register"
+                         Text="Add"
+                             TextColor="White"
+                         Command="{Binding AddClientCommand}"
+                         CommandParameter="{Binding FirstName}"    
+                        />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

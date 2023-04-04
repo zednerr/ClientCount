@@ -1,0 +1,74 @@
+.main {
+    margin:20;
+    height:30;
+}
+.StackStyle{
+    margin:30,20,30,20;
+
+}
+.labelowner {
+    font-family: MontserratSemiBold;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16;
+    line-height: 19;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.025;
+    padding-left: 10;
+    padding-right: 13;
+    color: #0C6FFE;
+}
+
+.labellower {
+    font-family: MontserratRegular;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16;
+    line-height: 16;
+    padding-left: 10;
+    padding-right: 13;
+    letter-spacing: -0.025;
+    color: black;
+}
+^label {
+    font-family: MontserratSemiBold;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16;
+    line-height: 19;
+    letter-spacing: -0.025;
+}
+^entry {
+    font-family: MontserratRegular;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16;
+    letter-spacing: -0.025;
+}
+^frame {
+   border-radius:20;
+   height:40;
+}
+.buttonstyle {
+    width:130;
+    height:60;
+   background-color: #F9AA33;
+    border-radius:10;
+}
+.button_add {
+    margin:80,0,80,10;
+    padding:22;
+}
+.frame_add {
+    height: 60;
+    margin: 30,20,30,20;
+}
+^button {
+    font-family: MontserratMedium;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14;
+    line-height: 19;
+    letter-spacing: -0.025;
+}

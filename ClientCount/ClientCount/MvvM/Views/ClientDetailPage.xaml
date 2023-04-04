@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="ClientCount.MvvM.Views.ClientDetailPage"
+             Title="Client editing" 
+             >
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+            <StyleSheet Source="/Assets/StylesAdd.css" />
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <ScrollView x:Name="ClDetail">
+            <StackLayout>
+
+                <Frame StyleClass="frame_add">
+                    <StackLayout >
+                        <Label StyleClass="labelowner" Text="Name *" HorizontalOptions="Center"/>
+                        <Entry  Text="{Binding FirstName}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame StyleClass="frame_add">
+                    <StackLayout>
+                        <Label StyleClass="labelowner"  Text="Surname *" HorizontalOptions="Center"
+                                  />
+                        <Entry Text="{Binding LastName}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame StyleClass="frame_add">
+                    <StackLayout>
+                        <Label StyleClass="labelowner"  Text="Patronymic" HorizontalOptions="Center"
+                                   />
+                        <Entry Text="{Binding Patronymic}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame StyleClass="frame_add">
+                    <StackLayout>
+                        <Label StyleClass="labelowner"  Text="Mobile number *" HorizontalOptions="Center"
+                                  />
+                        <Entry  Text="{Binding PhoneNumber}" Keyboard="Numeric">
+                            <Entry.Behaviors>
+                                <xct:MaskedBehavior 
+                                    
+                                    Mask="XX(XXX)XXX-XX-XX"
+                                    UnMaskedCharacter="X"
+                                />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                </Frame>
+                <Frame StyleClass="frame_add">
+                    <StackLayout>
+                        <Label StyleClass="labelowner"  Text="Home number" HorizontalOptions="Center"
+                                  />
+                        <Entry  Text="{Binding HphoneNumber}" Keyboard="Numeric">
+                            <Entry.Behaviors>
+                                <xct:MaskedBehavior 
+                                    Mask="XXX-XX-XX"
+                                    UnMaskedCharacter="X"
+                                />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                </Frame>
+                <Frame StyleClass="frame_add">
+                    <StackLayout>
+                        <Label StyleClass="labelowner"  Text="Employee *" HorizontalOptions="Center"
+                                      />
+                        <Entry Placeholder="Employee" Text="{Binding Employee}" IsReadOnly="True"/>
+                    </StackLayout>
+                </Frame>
+
+                <StackLayout  StyleClass="frame_add">
+                    <Grid
+                            VerticalOptions="StartAndExpand"
+                            ColumnDefinitions="33.33*, 33.33*, 33.33*"
+
+                            >
+
+                        <Button  BackgroundColor="#F9AA33" 
+                         TextColor="White"
+                         HeightRequest="50"
+                         CornerRadius="35"
+                                 WidthRequest="50"
+                         Text="Edit"
+                         Grid.Column="0"
+                         Command="{Binding UpdateClientCommand}"
+                         CommandParameter="{Binding FirstName}"
+                                 Clicked="Button_Clicked1"/>
+
+                        <Button BackgroundColor="#F9AA33" 
+                         TextColor="White"
+                         Grid.Column="1" 
+                                    CornerRadius="35"
+                         HeightRequest="50"
+                                WidthRequest="50"
+                         Text="Address"
+                         Command="{Binding LivingPlaceListCommand}"
+                                    
+                         />
+
+                        <Button BackgroundColor="#F9AA33" 
+                         TextColor="White"
+                                Grid.Column="2"
+                         HeightRequest="50"
+                           WidthRequest="50"
+                                    CornerRadius="35"
+                         Text="Delete"
+                         Command="{Binding DeleteClientCommand}"
+                         CommandParameter="{Binding FirstName}"
+                          Clicked="Button_Clicked"
+                                    />
+                    </Grid>
+                </StackLayout>
+
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

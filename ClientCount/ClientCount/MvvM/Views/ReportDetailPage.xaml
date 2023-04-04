@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClientCount.MvvM.Views.ReportDetailPage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"  Color="Transparent" VerticalOptions="Center">
+
+        <StackLayout Margin="20,20,0,0">
+        <StackLayout Orientation="Vertical" x:Name="Content_s" HorizontalOptions="Center" BackgroundColor="#344955" xct:CornerRadiusEffect.CornerRadius="20">
+            <Label Text="Report" FontFamily="MontserratSemiBold" FontSize="16" TextColor="White"  HorizontalTextAlignment="Center"/>
+            <StackLayout HorizontalOptions="Center">
+                <Label Text="Filter" FontFamily="MontserratMedium" FontSize="16" TextColor="White"  HorizontalOptions="Center"/>
+                <Picker FontFamily="MontserratRegular" FontSize="16" BackgroundColor="#4A6572" WidthRequest="200" SelectedIndexChanged="picker_fil_SelectedIndexChanged" HorizontalTextAlignment="Center"  TextColor="White" x:Name="picker_fil" HeightRequest="45" xct:CornerRadiusEffect.CornerRadius="20"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <StackLayout Orientation="Vertical" Margin="0,0,15,0">
+                    <Label x:Name="l_l" Text="From" FontFamily="MontserratMedium" FontSize="16" TextColor="White"   HorizontalOptions="Center"/>
+                    <DatePicker x:Name="d_l" PropertyChanged="d_l_PropertyChanged" FontFamily="MontserratRegular" FontSize="16" TextColor="White" BackgroundColor="#4A6572"  Format="yyyy-MM-dd" HeightRequest="45" WidthRequest="130" xct:CornerRadiusEffect.CornerRadius="20"/>
+        </StackLayout>
+                <StackLayout Orientation="Vertical" Margin="15,0,0,0">
+                    <Label x:Name="l_u" Text="To" FontFamily="MontserratMedium" FontSize="16" TextColor="White"   HorizontalOptions="Center"/>
+                    <DatePicker x:Name="d_u" BackgroundColor="#4A6572" FontFamily="MontserratRegular" FontSize="16" TextColor="White" Format="yyyy-MM-dd" HeightRequest="45" WidthRequest="130" xct:CornerRadiusEffect.CornerRadius="20"/>
+        </StackLayout>
+        </StackLayout>
+            <StackLayout Margin="0,5,0,0">
+                <Button Clicked="Button_Clicked" HorizontalOptions="Center" VerticalOptions="Center" FontFamily="MontserratRegular" FontSize="14" Text="Create"  WidthRequest="130" HeightRequest="40" CornerRadius="10" BackgroundColor="#4A6572" TextColor="White"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </StackLayout>
+</xct:Popup>

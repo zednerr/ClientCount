@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="ClientCount.MvvM.Views.EmployeeDetailPage"
+             Title="Editing an employee">
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+            <StyleSheet Source="/Assets/StylesAdd.css"/>
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <ScrollView x:Name="ClDetail">
+            <StackLayout>
+
+                <Frame StyleClass="frame_add">
+                    <StackLayout >
+                        <Label Text="Name *" StyleClass="labelowner" HorizontalOptions="Center"/>
+                        <Entry  Text="{Binding FirstName}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame StyleClass="frame_add">
+                    <StackLayout>
+                        <Label Text="Surname *" StyleClass="labelowner" HorizontalOptions="Center"
+                                  />
+                        <Entry Text="{Binding LastName}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame StyleClass="frame_add">
+                    <StackLayout>
+                        <Label Text="Patronymic" StyleClass="labelowner" HorizontalOptions="Center"
+                                   />
+                        <Entry Text="{Binding Patronymic}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame StyleClass="frame_add">
+                    <StackLayout>
+                        <Label Text="Mobile number *" StyleClass="labelowner" HorizontalOptions="Center"
+                                  />
+                        <Entry  Text="{Binding PhoneNumber}" Keyboard="Numeric">
+                            <Entry.Behaviors>
+                                <xct:MaskedBehavior 
+                                    
+                                    Mask="XX(XXX)XXX-XX-XX"
+                                    UnMaskedCharacter="X"
+                                />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                </Frame>
+                <StackLayout  StyleClass="frame_add">
+                    <Grid
+                            VerticalOptions="StartAndExpand"
+                            ColumnDefinitions="50*,50*"
+
+                            >
+
+                        <Button  BackgroundColor="#F9AA33" 
+                         TextColor="White"
+                         HeightRequest="50"
+                         CornerRadius="35"
+                                 WidthRequest="50"
+                         Text="Edit"
+                         Grid.Column="0"
+                         Command="{Binding UpdateEmployeeCommand}"
+                                 Clicked="Button_Clicked"/>
+
+                        <Button BackgroundColor="#F9AA33" 
+                         TextColor="White"
+                                Grid.Column="1"
+                         HeightRequest="50"
+                           WidthRequest="50"
+                                    CornerRadius="35"
+                         Text="Delete"
+                         Command="{Binding DeleteEmployeeCommand}"
+                                Clicked="Button_Clicked_1"/>
+                    </Grid>
+                </StackLayout>
+
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

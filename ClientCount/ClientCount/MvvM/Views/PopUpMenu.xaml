@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClientCount.MvvM.Views.PopUpMenu"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+              Color="Transparent" VerticalOptions="End">
+    <AbsoluteLayout Margin="20,20,0,0" BackgroundColor="Transparent">
+        <BoxView BackgroundColor="#232F34" x:Name="lay" CornerRadius="10,10,0,0"/>
+        <BoxView BackgroundColor="#344955" x:Name="lays"  CornerRadius="15,15,0,0" AbsoluteLayout.LayoutBounds="0,18"/>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal" Margin="10,35,10,9">
+                <ImageButton Source="label1.png" HeightRequest="32" WidthRequest="32"  BackgroundColor="Transparent" Command="{Binding ReportCommand}" Clicked="ImageButton_Clicked_1"/>
+                <Label Text="Accounting export" FontFamily="Merriweather-Regular" FontSize="14" TextColor="White" VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="10,9,10,9">
+                <ImageButton Source="label2.png" HeightRequest="32" WidthRequest="32" Command="{Binding EmployeeListCommand}"  Clicked="ImageButton_Clicked_2" BackgroundColor="Transparent"/>
+                <Label Text="List of employees" FontFamily="Merriweather-Regular" FontSize="14" TextColor="White" VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="10,9,10,9">
+                <ImageButton Source="label3.png" HeightRequest="32" WidthRequest="32" Command="{Binding ActionsViewCommand}" Clicked="ImageButton_Clicked" BackgroundColor="Transparent"/>
+                <Label Text="Tasks" TextColor="White" FontFamily="Merriweather-Regular" FontSize="14" VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"  Margin="10,9,10,35">
+            <Image Source="label4.png" HeightRequest="32" WidthRequest="32"/>
+                <Label Text="Analytics" TextColor="White" FontFamily="Merriweather-Regular" FontSize="14" VerticalOptions="Center"/>
+        </StackLayout>
+        </StackLayout>
+    </AbsoluteLayout>
+</xct:Popup>

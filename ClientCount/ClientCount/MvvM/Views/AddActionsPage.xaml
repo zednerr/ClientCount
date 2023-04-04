@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClientCount.MvvM.Views.AddActionsPage"
+              xmlns:xct="http://xamarin.com/schemas/2020/toolkit" Title="Creating a task">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <StyleSheet Source="/Assets/StylesAdd.css"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout Padding="5">
+                <StackLayout StyleClass="StackStyle">
+                    <Label Text="Task:" HorizontalOptions="Center"/>
+                    <Frame>
+                        <StackLayout>
+                            <Picker FontFamily="MontserratRegular" FontSize="16" x:Name="actionslist" SelectedItem="{Binding ActionType}"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout >
+                <StackLayout StyleClass="StackStyle">
+                    <Label Text="Date of completion:" HorizontalOptions="Center"/>
+                    <Frame>
+                        <StackLayout>
+                            <DatePicker FontSize="16" FontFamily="MontserratRegular" Date="{Binding DateAction}"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <StackLayout StyleClass="StackStyle">
+                    <Label Text="Employee: " HorizontalOptions="Center"/>
+                    <Frame>
+                        <StackLayout>
+
+                            <Picker FontFamily="MontserratRegular" FontSize="16" ItemsSource="{Binding Employees,Mode=TwoWay}"
+                        ItemDisplayBinding="{Binding LastName}"
+                        SelectedItem="{Binding SelectedEmployee}"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <StackLayout StyleClass="button_add">
+                    <Button FontFamily="MontserratMedium"  FontSize="16"  StyleClass="buttonstyle"
+                              TextColor="White"
+                          Text="Create"
+                              Command="{Binding AddActionsCommand}"
+                             />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

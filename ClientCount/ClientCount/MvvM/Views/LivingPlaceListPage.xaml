@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClientCount.MvvM.Views.LivingPlaceListPage"
+             Title="List Address">
+    <ContentPage.Resources>
+        <StyleSheet Source="/Assets/Styles.css"/>
+    </ContentPage.Resources>
+    <StackLayout Spacing="0" BackgroundColor="#F3F3F2">
+        <ListView x:Name="SearchResult" ItemsSource="{Binding LivingPlaces}"
+                  SeparatorVisibility="None" 
+                  HasUnevenRows="True"
+                  SelectedItem="{Binding SelectedItem, Mode=TwoWay }">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Margin="30,20,30,20" CornerRadius="5">
+                            <StackLayout>
+                                <Label StyleClass="labelowner" Text="City"/>
+                                    <Label StyleClass="labellower" Text="{Binding City}"/>
+                                    <Label StyleClass="labelowner" Text="Street"/>
+                                    <Label StyleClass="labellower" Text="{Binding Street}"/>
+                                    <Label StyleClass="labelowner" Text="House number"/>
+                                    <Label StyleClass="labellower" Text="{Binding HouseNumber}"/>
+                                    <Label StyleClass="labelowner" Text="Flat number"/>
+                                    <Label StyleClass="labellower" Text="{Binding FlatNumber}"/>
+                                    <Label StyleClass="labelowner" Text="Brand"/>
+                                    <Label StyleClass="labellower" Text="{Binding BrandName}"/>
+                                    <Label StyleClass="labelowner" Text="Model type"/>
+                                    <Label StyleClass="labellower" Text="{Binding ModelName}"/>
+                            </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+            </ListView>
+            <RelativeLayout HeightRequest="90"  BackgroundColor="Transparent">
+                <BoxView Color="#4A6572" HeightRequest="60" x:Name="arrowme"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y,Constant=30}"/>
+                <BoxView CornerRadius="35" HeightRequest="70" WidthRequest="70"
+                        BackgroundColor="#F3F3F2"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0.5,Constant=-35}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y,Constant=0}"/>
+
+                <ImageButton Source="AddButton.png"
+                   
+                    VerticalOptions="CenterAndExpand" 
+                             WidthRequest="60"
+                             HeightRequest="60"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0.5,Constant=-30}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y,Constant=0}"
+                              BackgroundColor="Transparent"
+                                 Command="{Binding AddLivingPlaceCommand}"
+                             />
+                <Grid BackgroundColor="Transparent" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0,Constant=20}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y,Constant=45}">
+                    <Image x:Name="arrowanim" Source="arrowwhite.png" HeightRequest="24" WidthRequest="24" Grid.Column="0" Grid.Row="0"/>
+                    <ImageButton x:Name="notetextanim" Source="notetext.png" HeightRequest="24" WidthRequest="24" Grid.Column="1" Grid.Row="0" Clicked="notetextanim_Clicked" BackgroundColor="Transparent"/>
+                </Grid>
+                <ImageButton x:Name="searchanim" Source="search.png" HeightRequest="24" WidthRequest="24" BackgroundColor="Transparent" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=1,Constant=-44}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y,Constant=45}" Clicked="searchanim_Clicked"/>
+            </RelativeLayout>
+        </StackLayout>
+
+</ContentPage>

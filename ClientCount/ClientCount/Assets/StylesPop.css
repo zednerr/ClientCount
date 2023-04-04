@@ -1,0 +1,32 @@
+﻿.label {
+    font-family: MontserratSemiBold;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16;
+    line-height: 19;
+    letter-spacing: -0.025;
+    color:white;
+}
+
+.Datepicker {
+    font-family: MontserratRegular;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16;
+    line-height: 16;
+    padding-left: 10;
+    padding-right: 13;
+    letter-spacing: -0.025;
+    color: white;
+}
+.picker {
+    font-family: MontserratRegular;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16;
+    line-height: 16;
+    padding-left: 10;
+    padding-right: 13;
+    letter-spacing: -0.025;
+    color:white;
+}

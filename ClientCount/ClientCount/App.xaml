@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClientCount.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--<Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="#E8E2E2"/>
+                <Setter Property="BackgroundColor" Value="#E8E2E2"/>
+                <Setter Property="BarTextColor" Value="Black"/>
+            </Style>
+            <Style x:Key="high_label" TargetType="Label">
+                <Setter Property="FontFamily" Value="ArimaMadurai-Black"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="low_label" TargetType="Label">
+                <Setter Property="FontFamily" Value="ArimaMadurai-Black"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Padding" Value="0,0,0,5"/>
+                
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="PlaceholderColor" Value="Black"/>
+               
+            </Style>
+            <Style TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="#F5F5F5"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="HasShadow" Value="True"/>
+            </Style>
+           
+
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#2A80BC"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="60"/>
+            </Style>
+            <Style TargetType="SearchBar">
+                <Setter Property="FontFamily" Value="ArimaMadurai-Black"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="PlaceholderColor" Value="Black"/>
+                <Setter Property="CancelButtonColor" Value="Black"/>
+            </Style>-->
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

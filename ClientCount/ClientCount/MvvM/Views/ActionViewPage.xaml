@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClientCount.MvvM.Views.ActionViewPage" Title="List of task">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <StyleSheet Source="/Assets/Styles.css" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Spacing="0" BackgroundColor="#F3F3F2">
+        <ListView x:Name="SearchResult" ItemsSource="{Binding ActionsAdd}"
+                  SeparatorVisibility="None" 
+                  HasUnevenRows="True"
+                 >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Perform" CommandParameter="{Binding .}" Clicked="MenuItem_Clicked"></MenuItem>
+                            <MenuItem Text="Not Done" CommandParameter="{Binding .}" Clicked="MenuItem_Clicked_1"></MenuItem>
+                            <MenuItem Text="Cancel" CommandParameter="{Binding .}" Clicked="MenuItem_Clicked_2"></MenuItem>
+                        </ViewCell.ContextActions>
+                        <Frame Margin="30,20,30,20" CornerRadius="5" WidthRequest="340">
+                                <StackLayout>
+                                    <Label StyleClass="labelowner" Text="Task"/>
+                                    <Label StyleClass="labellower" Text="{Binding ActionType}"/>
+                                    <Label StyleClass="labelowner" Text="Execution date"/>
+                                    <Label StyleClass="labellower" Text="{Binding DateAction}"/>
+                                    <Label StyleClass="labelowner" Text="Client"/>
+                                    <Label StyleClass="labellower"  Text="{Binding FullName}" HorizontalOptions="FillAndExpand"/>
+                                    <Label StyleClass="labelowner" Text="Street"/>
+                                    <Label StyleClass="labellower" Text="{Binding Street}"/>
+                                    <Label StyleClass="labelowner" Text="Employee"/>
+                                    <Label StyleClass="labellower" Text="{Binding EmployeeLastName}"/>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <RelativeLayout HeightRequest="90"  BackgroundColor="Transparent">
+            <BoxView Color="#4A6572" HeightRequest="60" x:Name="arrowme"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y,Constant=30}"/>
+            <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0.5,Constant=-24}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y,Constant=45}">
+                <Image x:Name="arrowanim" Source="arrowwhite.png" HeightRequest="24" WidthRequest="24" Margin="0"/>
+                <ImageButton x:Name="notetextanim" Source="notetext.png" HeightRequest="24" WidthRequest="24" Margin="0" Clicked="notetextanim_Clicked" BackgroundColor="Transparent"/>
+            </StackLayout>
+        </RelativeLayout>
+
+        </StackLayout>
+</ContentPage>

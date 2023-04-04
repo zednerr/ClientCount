@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClientCount.MvvM.Views.LivingPlaceDetailPage"
+             Title="Editing an address" 
+             >
+    <ContentPage.Resources>
+        <StyleSheet Source="/Assets/StylesAdd.css" />
+    </ContentPage.Resources>
+
+    <StackLayout>
+            <ScrollView x:Name="ClDetail">
+                <StackLayout>
+                    <!--livingplace-->
+                    <Frame StyleClass="frame_add">
+                        <StackLayout>
+                        <Label StyleClass="labelowner" Text="Region *" HorizontalOptions="Center"/>
+                    <Entry Text="{Binding Region}"/>
+                        </StackLayout>
+                    </Frame>
+                <Frame StyleClass="frame_add">
+                        <StackLayout>
+                        <Label StyleClass="labelowner" Text="City *" HorizontalOptions="Center"/>
+                    <Entry Text="{Binding City}"/>
+                        </StackLayout>
+                    </Frame>
+                <Frame StyleClass="frame_add">
+                        <StackLayout>
+                        <Label StyleClass="labelowner" Text="Street *" HorizontalOptions="Center"/>
+                    <Entry Text="{Binding Street}"/>
+                        </StackLayout>
+                    </Frame>
+                <Frame StyleClass="frame_add">
+                        <StackLayout>
+                        <Label StyleClass="labelowner" Text="House number *" HorizontalOptions="Center"/>
+                    <Entry Text="{Binding HouseNumber}"/>
+                        </StackLayout>
+                    </Frame>
+                <Frame StyleClass="frame_add">
+                        <StackLayout>
+                        <Label StyleClass="labelowner" Text="Flat number" HorizontalOptions="Center"/>
+                    <Entry Text="{Binding FlatNumber}" />
+                        </StackLayout>
+                    </Frame>
+                    <!--equip-->
+                <Frame StyleClass="frame_add">
+                        <StackLayout>
+                        <Label StyleClass="labelowner" Text="Brand *" HorizontalOptions="Center"/>
+                    <Entry Text="{Binding BrandName}"/>
+                        </StackLayout>
+                    </Frame>
+                <Frame StyleClass="frame_add">
+                        <StackLayout>
+                        <Label StyleClass="labelowner" Text="Model *" HorizontalOptions="Center"/>
+                    <Entry Text="{Binding ModelName}"/>
+                        </StackLayout>
+                    </Frame>
+                <Frame StyleClass="frame_add">
+                        <StackLayout>
+                        <Label StyleClass="labelowner" Text="Model type *" HorizontalOptions="Center"/>
+                    <Entry Text="{Binding TypeModel}"/>
+                        </StackLayout>
+                    </Frame>
+                <Frame StyleClass="frame_add">
+                        <StackLayout>
+                        <Label StyleClass="labelowner" Text="Serial number *" HorizontalOptions="Center"/>
+                    <Entry Text="{Binding SerialNumber}"/>
+                        </StackLayout>
+                    </Frame>
+                <Frame StyleClass="frame_add">
+                        <StackLayout>
+                        <Label StyleClass="labelowner" Text="Warranty number *" HorizontalOptions="Center"/>
+                    <Entry Text="{Binding GuaranteeNumber}"/>
+                        </StackLayout>
+                    </Frame>
+                    <!--Datepicker for sold date-->
+                <Frame StyleClass="frame_add">
+                        <StackLayout>
+                        <Label StyleClass="labelowner" Text="Date of sale *" HorizontalOptions="Center"/>
+                        <DatePicker x:Name="d_sold" PropertyChanged="d_sold_PropertyChanged" Date="{Binding DateSold}" Format="yyyy-MM-dd"/>
+                        </StackLayout>
+                    </Frame>
+                    <!--Datepicker for exploitation date-->
+                <Frame StyleClass="frame_add">
+                        <StackLayout>
+                        <Label StyleClass="labelowner" Text="Date of commissioning *" HorizontalOptions="Center"/>
+                        <DatePicker x:Name="d_com" Date="{Binding DateStartExp}" Format="yyyy-MM-dd"/>
+                        </StackLayout>
+                    </Frame>
+                <StackLayout StyleClass="frame_add">
+                    <Grid  VerticalOptions="StartAndExpand"
+                               ColumnDefinitions="33.33*, 33.33*, 33.33*"
+                               >
+                        <Button BackgroundColor="#F9AA33" 
+                         TextColor="White"
+                         
+                                    Grid.Column="0"
+                                    HeightRequest="50"
+                                    CornerRadius="35"
+                                    WidthRequest="50"
+                         Text="Edit"
+                         Command="{Binding UpdateLivingPlaceCommand}"
+                         Clicked="Button_Clicked_1"/>
+
+                        <Button BackgroundColor="#F9AA33" 
+                         TextColor="White"
+                         
+                            Grid.Column="1"
+                             HeightRequest="50"
+                                    CornerRadius="35"
+                                    WidthRequest="50"
+                         Text="Delete"
+                            Command="{Binding DeleteLivingPlaceCommand}"
+                            Clicked="Button_Clicked"/>
+                        <Button BackgroundColor="#F9AA33" 
+                         TextColor="White"
+                            Grid.Column="2"
+                                    WidthRequest="50"
+                             HeightRequest="50"
+                                    CornerRadius="35"
+                         Text="Tasks"
+                            Command="{Binding AddActionCommand}"/>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    
+</ContentPage>
