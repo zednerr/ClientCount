@@ -106,18 +106,6 @@ namespace ClientCount.MvvM.ViewModels
         }
         public  void NavigateToClientDetails(Client client)
         {
-            //var result = await App.Current.MainPage.DisplayActionSheet("d", "n", null, "qwe", "weq", "ewq");
-            //switch(result) {
-            //    case "qwe":
-            //        await App.Current.MainPage.DisplayAlert("t", "t", "t");
-            //        break;
-            //    case "weq":
-            //        await App.Current.MainPage.DisplayAlert("w", "w", "w");
-            //        break;
-            //    case "ewq":
-            //        await App.Current.MainPage.DisplayAlert("s", "s", "s");
-            //        break;
-            //}
             App.Navigation.PushAsync(new NavigationPage(new ClientDetailPage(client)));
         }
 
