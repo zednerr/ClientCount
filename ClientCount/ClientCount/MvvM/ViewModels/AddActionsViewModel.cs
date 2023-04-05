@@ -135,17 +135,19 @@ namespace ClientCount.MvvM.ViewModels
                         });
                         if (result > 0)
                         {
+                            var option = new ToastView("Task successfully created!");
                             MessagingCenter.Send("AddActions", "UpdateListView", "Success");
                             await App.Navigation.PopAsync();
+                            await App.Current.MainPage.DisplayToastAsync(option.ToastOptions());
                         }
                     }
                     catch (NullReferenceException )
                     {
-                        await App.Current.MainPage.DisplayAlert("Error", "Save empty fields!", "Ok");
+                        await App.Current.MainPage.DisplayAlert("Error", "Fill in the blanks!", "Ok");
                     }
                     catch (SQLite.NotNullConstraintViolationException )
                     {
-                        await App.Current.MainPage.DisplayAlert("Error", "Save empty fields!", "Ok");
+                        await App.Current.MainPage.DisplayAlert("Error", "Fill in the blanks!", "Ok");
                     }
                 });
 

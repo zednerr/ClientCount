@@ -305,18 +305,18 @@ namespace ClientCount.MvvM.ViewModels
 
                         if (result > 0)
                         {
-                            var option = new ToastView("Дані успішно оновлено");
+                            var option = new ToastView("Data updated successfully!");
                             MessagingCenter.Send("LivingPlaceUpdateDetails", "UpdateLivingPlaceView", "Success");
                             await App.Current.MainPage.DisplayToastAsync(option.ToastOptions());
                         }
                     }
                     catch (NullReferenceException) {
 
-                        await App.Current.MainPage.DisplayAlert("Помилка", "Заповніть порожні поля!", "Ок");
+                        await App.Current.MainPage.DisplayAlert("Error", "Fill in the blanks!", "Ok");
                     }
                     catch (SQLite.NotNullConstraintViolationException)
                     {
-                        await App.Current.MainPage.DisplayAlert("Помилка", "Заповніть порожні поля!", "Ок");
+                        await App.Current.MainPage.DisplayAlert("Error", "Fill in the blanks!", "Ok");
                     }
                 });
             }
@@ -327,7 +327,8 @@ namespace ClientCount.MvvM.ViewModels
             {
                 return new Command(async () =>
                 {
-                    var accepted = await App.ConfirmAlert("Удаление", "Вы уверены что хотите удалить адрес ?");
+                    
+                    bool accepted = await Application.Current.MainPage.DisplayAlert("Delete", "Are you sure you want to delete the address ?", "Yes", "No");
                     if (accepted)
                     {
                         LivingPlaceService lpservice = new LivingPlaceService();

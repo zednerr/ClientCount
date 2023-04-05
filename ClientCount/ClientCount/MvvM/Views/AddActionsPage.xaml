@@ -13,7 +13,7 @@
         <ScrollView>
             <StackLayout Padding="5">
                 <StackLayout StyleClass="StackStyle">
-                    <Label Text="Task:" HorizontalOptions="Center"/>
+                    <Label Text="Task:" StyleClass="labelowner" HorizontalOptions="Center"/>
                     <Frame>
                         <StackLayout>
                             <Picker FontFamily="MontserratRegular" FontSize="16" x:Name="actionslist" SelectedItem="{Binding ActionType}"/>
@@ -21,7 +21,7 @@
                     </Frame>
                 </StackLayout >
                 <StackLayout StyleClass="StackStyle">
-                    <Label Text="Date of completion:" HorizontalOptions="Center"/>
+                    <Label Text="Date of completion:" StyleClass="labelowner" HorizontalOptions="Center"/>
                     <Frame>
                         <StackLayout>
                             <DatePicker FontSize="16" FontFamily="MontserratRegular" Date="{Binding DateAction}"/>
@@ -29,7 +29,7 @@
                     </Frame>
                 </StackLayout>
                 <StackLayout StyleClass="StackStyle">
-                    <Label Text="Employee: " HorizontalOptions="Center"/>
+                    <Label Text="Employee:" StyleClass="labelowner" HorizontalOptions="Center"/>
                     <Frame>
                         <StackLayout>
 

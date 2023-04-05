@@ -27,7 +27,7 @@
                                     <Label StyleClass="labelowner" Text="Execution date"/>
                                     <Label StyleClass="labellower" Text="{Binding DateAction}"/>
                                     <Label StyleClass="labelowner" Text="Client"/>
-                                    <Label StyleClass="labellower"  Text="{Binding FullName}" HorizontalOptions="FillAndExpand"/>
+                                    <Label StyleClass="labellower"  Text="{Binding FullName}" LineBreakMode="TailTruncation"/>
                                     <Label StyleClass="labelowner" Text="Street"/>
                                     <Label StyleClass="labellower" Text="{Binding Street}"/>
                                     <Label StyleClass="labelowner" Text="Employee"/>

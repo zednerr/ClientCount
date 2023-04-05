@@ -27,9 +27,9 @@ namespace ClientCount.MvvM.Views
             Size = size;
             Content_s.WidthRequest =size.Width-80;
             Content_s.HeightRequest = size.Height;
-            var options = new List<string> { "За весь час", "За поточний місяць", "Вручну" };
+            var options = new List<string> { "For the whole hour", "For current month", "Manually" };
             picker_fil.ItemsSource = options;
-            picker_fil.SelectedItem = "За весь час";
+            picker_fil.SelectedItem = "For the whole hour";
             d_l.Date = DateTime.Now;
             d_u.Date = DateTime.Now;
         }
@@ -42,19 +42,19 @@ namespace ClientCount.MvvM.Views
             var selected_options = picker_fil.SelectedItem;
             switch (selected_options)
             {
-                case "За весь час":
+                case "For the whole hour":
                     var date_l = conn.Query<LivingPlace>("SELECT livingPlace.DateStartExp FROM livingplace ORDER BY livingPlace.DateStartExp ASC LIMIT 1");
                     var date_u= conn.Query<LivingPlace>("SELECT livingPlace.DateStartExp FROM livingplace ORDER BY livingPlace.DateStartExp DESC LIMIT 1");
                     date_low = date_l[0].DateStartExp;
                     date_up = date_u[0].DateStartExp;
                     break;
-                case "За поточний місяць":
+                case "For current month":
                      date_l = conn.Query<LivingPlace>("SELECT DateStartExp FROM livingplace WHERE DateStartExp >= date('now','start of month') AND DateStartExp <= datetime('now', 'start of month', '+1 month', '-1 day') ORDER BY DateStartExp ASC LIMIT 1");
                      date_u = conn.Query<LivingPlace>("SELECT DateStartExp FROM livingplace WHERE DateStartExp >= date('now','start of month') AND DateStartExp <= datetime('now', 'start of month', '+1 month', '-1 day') ORDER BY DateStartExp DESC LIMIT 1");
                     date_low = date_l[0].DateStartExp;
                     date_up = date_u[0].DateStartExp;
                     break;
-                case "Вручну":
+                case "Manually":
                     date_low = d_l.Date.ToString("yyyy-MM-dd");
                     date_up = d_u.Date.ToString("yyyy-MM-dd");
                     break;
@@ -95,7 +95,7 @@ namespace ClientCount.MvvM.Views
 
             var data = new ExcelStructure
             {
-                Headers = new List<string>() { "Виробник", "Модель", "Серійний №", "№ Гар.талона", "Клієнт", "Дата пуску", "Співробітник", "Дата продажу", "Населенний пункт", "Вулиця", "Дім", "Кв", "Моб.телефон", "Дом.Телефон" }
+                Headers = new List<string>() { "Brand", "Model", "Serial №", "№ Guarantee", "Client", "Date of commissioning", "Employee", "Date sold", "City", "Street", "House number", "Flat number", "Mobile number", "Home number" }
             };
 
             foreach (var item in list)
@@ -126,19 +126,19 @@ namespace ClientCount.MvvM.Views
         {
             switch (picker_fil.SelectedItem.ToString())
             {
-                case "За весь час":
+                case "For the whole hour":
 
                     d_u.IsEnabled = false;
 
                     d_l.IsEnabled = false;
                     break;
-                case "За поточний місяць":
+                case "For current month":
 
                     d_u.IsEnabled = false;
 
                     d_l.IsEnabled = false;
                     break;
-                case "Вручну":
+                case "Manually":
 
                     d_u.IsEnabled = true;
 
