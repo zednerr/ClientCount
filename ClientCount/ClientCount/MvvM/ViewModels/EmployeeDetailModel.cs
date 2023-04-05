@@ -106,11 +106,11 @@ namespace ClientCount.MvvM.ViewModels
                     }
                     catch (NullReferenceException)
                     {
-                        await App.Current.MainPage.DisplayAlert("Помилка", "Заповніть порожні поля!", "Ок");
+                        await App.Current.MainPage.DisplayAlert("Error", "Fill in the blanks!", "Ok");
                     }
                     catch (SQLite.NotNullConstraintViolationException)
                     {
-                        await App.Current.MainPage.DisplayAlert("Помилка", "Заповніть порожні поля!", "Ок");
+                        await App.Current.MainPage.DisplayAlert("Error", "Fill in the blanks!", "Ok");
                     }
                 });
             }
@@ -121,7 +121,8 @@ namespace ClientCount.MvvM.ViewModels
             {
                 return new Command(async () =>
                 {
-                    var accepted = await App.ConfirmAlert("Delete", "Are you sure you want to delete the client?");
+
+                    var accepted = await Application.Current.MainPage.DisplayAlert("Delete", "Are you sure you want to delete the employee?", "Yes", "No");
                     if (accepted)
                     {
 

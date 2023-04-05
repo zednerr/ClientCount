@@ -25,7 +25,7 @@ namespace ClientCount.MvvM.Views
             var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
             Size size = new Size();
             size.Width = mainDisplayInfo.Width / mainDisplayInfo.Density;
-            size.Height = 270;
+            size.Height = 310;
             Size = size;
             lay.WidthRequest = size.Width;
             lay.HeightRequest = size.Height;
@@ -46,6 +46,11 @@ namespace ClientCount.MvvM.Views
         }
 
         private void ImageButton_Clicked_2(object sender, EventArgs e)
+        {
+            Dismiss(null);
+        }
+
+        private void ImageButton_Clicked_3(object sender, EventArgs e)
         {
             Dismiss(null);
         }

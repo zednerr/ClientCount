@@ -93,6 +93,17 @@ namespace ClientCount.MvvM.ViewModels
                 });
             }
         }
+
+        public ICommand ListClientCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    App.Navigation.PopToRootAsync();
+                });
+            }
+        }
         public  void NavigateToClientDetails(Client client)
         {
             //var result = await App.Current.MainPage.DisplayActionSheet("d", "n", null, "qwe", "weq", "ewq");
