@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ClientCount.MvvM.Views.ListEmployeePage"
-             Title="List of employees">
-    <ContentPage.Resources>
+            NavigationPage.HasNavigationBar="False">
+    <TabbedPage.Resources>
         <StyleSheet Source="/Assets/Styles.css" />
-    </ContentPage.Resources>
-
-    <StackLayout Spacing="0" BackgroundColor="#F3F3F2">
+    </TabbedPage.Resources>
+    <ContentPage Title="List of employees">
+        <StackLayout Spacing="0" BackgroundColor="#F3F3F2">
         <ListView x:Name="SearchResult" ItemsSource="{Binding Employees}"
                   SeparatorVisibility="None" 
                   HasUnevenRows="True"
@@ -55,4 +55,14 @@
         </RelativeLayout>
 
     </StackLayout>
-</ContentPage>
+    </ContentPage>
+    <ContentPage Title="Model and Brands">
+        <!--<StackLayout>
+            <ListView>
+                <ListView.ItemTemplate>
+                    
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>-->
+    </ContentPage>
+</TabbedPage>

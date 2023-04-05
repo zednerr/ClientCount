@@ -12,7 +12,7 @@ using Xamarin.Forms.Xaml;
 namespace ClientCount.MvvM.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ListEmployeePage : ContentPage
+    public partial class ListEmployeePage : TabbedPage
     {
         public ListEmployeePage()
         {
