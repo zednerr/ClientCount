@@ -31,6 +31,10 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <StackLayout Orientation="Horizontal">
+            <Button x:Name="l_b" Clicked="l_b_Clicked"/>
+            <Button x:Name="r_b" Clicked="r_b_Clicked"/>
+        </StackLayout>
         <RelativeLayout HeightRequest="90"  BackgroundColor="Transparent">
             <BoxView Color="#4A6572" HeightRequest="60" x:Name="arrowme"
                          RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"

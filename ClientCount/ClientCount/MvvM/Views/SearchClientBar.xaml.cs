@@ -65,7 +65,7 @@ namespace ClientCount.MvvM.Views
                 case "mainpage":
                 
                     var list2 = conn.Query<Client>($"Select id,firstname||' '||lastname as firstname,phonenumber from client where firstname||lastname||phonenumber LIKE '%{bar_search.Text}%'");
-                    MessagingCenter.Send(new SearchResult() { ReturnData_Client = list2 }, "PopUpData");
+                    MessagingCenter.Send(list2, "PopUpData");
                     break;
                 case "listlivingplaceview":
                 

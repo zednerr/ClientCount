@@ -159,7 +159,7 @@ namespace ClientCount.MvvM.ViewModels
                         {
                             var option = new ToastView("Data updated successfully!");
                             MessagingCenter.Send("ClientDetails", "UpdateListView", "Success");
-                            await App.Current.MainPage.DisplayToastAsync(option.ToastOptions());
+                            await Application.Current.MainPage.DisplayToastAsync(option.ToastOptions());
 
                         }
                       
@@ -167,11 +167,11 @@ namespace ClientCount.MvvM.ViewModels
                     }
                     catch (NullReferenceException) 
                     {
-                        await App.Current.MainPage.DisplayAlert("Error", "Fill in the blanks!", "Ok");
+                        await Application.Current.MainPage.DisplayAlert("Error", "Fill in the blanks!", "Ok");
                     }
                     catch (SQLite.NotNullConstraintViolationException)
                     {
-                        await App.Current.MainPage.DisplayAlert("Error", "Fill in the blanks!", "Ok");
+                        await Application.Current.MainPage.DisplayAlert("Error", "Fill in the blanks!", "Ok");
                     }
                 });
 

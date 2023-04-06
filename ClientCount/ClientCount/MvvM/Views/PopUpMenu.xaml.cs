@@ -32,7 +32,7 @@ namespace ClientCount.MvvM.Views
             lays.WidthRequest = size.Width;
             lays.HeightRequest = size.Height;
 
-            BindingContext = new ClientsListViewModel();
+            BindingContext = new PopUpMenuModel();
         }
 
         private void ImageButton_Clicked(object sender, EventArgs e)

@@ -15,21 +15,26 @@ namespace ClientCount
 {
     public partial class MainPage : ContentPage
     {
+        public int current_page = 1;
+        static int item_on_page = 5;
+        static ClientService clientService = new ClientService();
+        static int a = clientService.CountClients();
+        static int pages = a % item_on_page;
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new ClientsListViewModel();
+            BindingContext = new ClientsListViewModel(current_page);
             App.Navigation = Navigation;
         }
         protected override void OnAppearing()
         {
             MessagingCenter.Subscribe<string, string>("MainPage", "UpdateListView", (sender, result) => {
 
-                BindingContext = new ClientsListViewModel();
+                BindingContext = new ClientsListViewModel(current_page);
             });
-            MessagingCenter.Subscribe<SearchResult>(this, "PopUpData", (value) =>
+            MessagingCenter.Subscribe<List<Client>>(this, "PopUpData", (value) =>
             {
-                SearchResult.ItemsSource = value.ReturnData_Client;
+                SearchResult.ItemsSource = value;
             });
         }   
         protected override void OnDisappearing()
@@ -174,5 +179,20 @@ namespace ClientCount
                 var result = await Navigation.ShowPopupAsync(new SearchClientBar("mainpage"));
         }
 
+        private void l_b_Clicked(object sender, EventArgs e)
+        {
+            if (current_page - 1 != 0)
+            {
+                current_page -= 1;
+                MessagingCenter.Send("PrevPage", "UpdateListView", "Success");
+            }
+        }
+
+        private void r_b_Clicked(object sender, EventArgs e)
+        {
+            if(current_page+1<=pages)
+            current_page += 1;
+            MessagingCenter.Send("NextPage", "UpdateListView", "Success");
+        }
     }
 }
