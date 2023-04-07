@@ -1,4 +1,5 @@
-﻿using ClientCount.Models;
+﻿using Android.Provider;
+using ClientCount.Models;
 using ClientCount.MvvM.Views;
 using ClientCount.Services;
 using System;
@@ -68,6 +69,10 @@ namespace ClientCount.MvvM.ViewModels
         {
             var clientService = new ClientService();
             Clients = clientService.ReadAllClientsOnPage(cur_page);
+        }
+        public ClientsListViewModel(List<Client> clients)
+        {
+            Clients = clients;
         }
 
     }

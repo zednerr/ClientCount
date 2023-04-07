@@ -10,6 +10,7 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using Path = System.IO.Path;
 using Xamarin.CommunityToolkit.Extensions;
+using Android.Views.Accessibility;
 
 namespace ClientCount
 {
@@ -18,8 +19,8 @@ namespace ClientCount
         public int current_page = 1;
         static int item_on_page = 5;
         static ClientService clientService = new ClientService();
-        static int a = clientService.CountClients();
-        static int pages = a % item_on_page;
+        static double a = clientService.CountClients();
+        static double pages = Math.Ceiling(a/item_on_page);
         public MainPage()
         {
             InitializeComponent();
@@ -34,7 +35,7 @@ namespace ClientCount
             });
             MessagingCenter.Subscribe<List<Client>>(this, "PopUpData", (value) =>
             {
-                SearchResult.ItemsSource = value;
+                BindingContext = new ClientsListViewModel(value);
             });
         }   
         protected override void OnDisappearing()
