@@ -12,6 +12,8 @@ namespace ClientCount.MvvM.ViewModels
     public class ListEmployeeViewModel:ViewModelBase
     {
         private List<Employee> employees = new List<Employee>();
+        private List<Brand> brands = new List<Brand>();
+        private List<Model> models = new List<Model>();
         public List<Employee> Employees {
             set {
                 if (employees.Count != value.Count)
@@ -22,6 +24,33 @@ namespace ClientCount.MvvM.ViewModels
             }
             get { return employees; }
         }
+
+        public List<Brand> Brands
+        {
+            set
+            {
+                if (brands != value)
+                {
+                    brands = value;
+                    OnPropertyChanged("Brands");
+                }
+            }
+            get { return brands; }
+        }
+
+        public List<Model> Models
+        {
+            set
+            {
+                if (models != value)
+                {
+                    models = value;
+                    OnPropertyChanged("Models");
+                }
+            }
+            get { return models; }
+        }
+
         private Employee _selectedItem;
         public Employee SelectedItem
         {
@@ -55,7 +84,11 @@ namespace ClientCount.MvvM.ViewModels
         public ListEmployeeViewModel()
         {
             var employeeService = new EmployeeService();
+            var modelService = new ModelService();
+            var brandService = new BrandService();
             Employees = employeeService.ReadAllEmployeeforview();
+            Models = modelService.GetAllModels();
+            Brands = brandService.GetAllBrands();
         }
     }
 }

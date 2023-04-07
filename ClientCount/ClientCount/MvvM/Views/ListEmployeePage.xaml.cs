@@ -1,5 +1,6 @@
 ﻿using ClientCount.Models;
 using ClientCount.MvvM.ViewModels;
+using ClientCount.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace ClientCount.MvvM.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListEmployeePage : TabbedPage
     {
+       static BrandService BrandService = new BrandService();
+      static  ModelService modelService = new ModelService();
         public ListEmployeePage()
         {
             InitializeComponent();
@@ -21,7 +24,7 @@ namespace ClientCount.MvvM.Views
         }
         protected override void OnAppearing()
         {
-            MessagingCenter.Subscribe<string, string>("ListEmployeePage", "UpdateListView", (sender, result) =>
+            MessagingCenter.Subscribe<string, string>("ListEmployeePage", "ListView", (sender, result) =>
             {
                 BindingContext = new ListEmployeeViewModel();
             });
@@ -29,10 +32,13 @@ namespace ClientCount.MvvM.Views
             {
                 SearchResult.ItemsSource = value.ReturnData_Employee;
             });
+            MessagingCenter.Subscribe<string, string>("MainPage", "Add", (sender, result) => {
+                BindingContext = new ListEmployeeViewModel();
+            });
         }
         protected override void OnDisappearing()
         {
-            MessagingCenter.Unsubscribe<string>("ListEmployeePage", "UpdateListView");
+            MessagingCenter.Unsubscribe<string>("ListEmployeePage", "ListView");
             MessagingCenter.Unsubscribe<SearchResult>(this, "PopUpData");
         }
 
@@ -53,5 +59,36 @@ namespace ClientCount.MvvM.Views
             await searchanim.ScaleTo(1, 150, Easing.Linear);
             var result = await Navigation.ShowPopupAsync(new SearchClientBar("listemployeepage"));
         }
-    }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+          string result = await DisplayPromptAsync("Add model", "enter model name: ");
+           
+           int res = modelService.CreateModel(new Model{
+                ModelName = result 
+            });
+            if (res > 0)
+            {
+                MessagingCenter.Send("AddEquip", "Add", "Success");
+            }
+        }
+
+        private async void Button_Clicked_1(object sender, EventArgs e)
+        {
+            string result = await DisplayPromptAsync("Add Brand", "enter brand name: ");
+            int res = BrandService.CreateBrand(new Brand
+            {
+                BrandName = result
+            });
+            if (res > 0)
+            {
+                MessagingCenter.Send("AddEquip", "Add", "Success");
+            }
+        }
+        //int res = BrandService.DeleteBrand(objecs.Text);
+        //    if (res > 0)
+        //    {
+        //        MessagingCenter.Send("AddEquip", "Add", "Success");
+        //    } DELETE MODEL AND BRAND
+}
 }

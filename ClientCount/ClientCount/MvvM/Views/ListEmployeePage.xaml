@@ -57,12 +57,36 @@
     </StackLayout>
     </ContentPage>
     <ContentPage Title="Model and Brands">
-        <!--<StackLayout>
-            <ListView>
+       <StackLayout Orientation="Vertical" >
+
+            <ListView BackgroundColor="Transparent" ItemsSource="{Binding Brands}" HeightRequest="300">
                 <ListView.ItemTemplate>
-                    
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame>
+                                <StackLayout>
+                                    <Label  StyleClass="labellower" Text="{Binding BrandName}"/>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>-->
+            <Button Clicked="Button_Clicked_1"/>
+            <ListView BackgroundColor="Transparent" ItemsSource="{Binding Models}"  HeightRequest="300">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame>
+                                <StackLayout>
+                                    <Label StyleClass="labellower" Text="{Binding ModelName}"/>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Clicked="Button_Clicked"/>
+        </StackLayout>
     </ContentPage>
 </TabbedPage>
