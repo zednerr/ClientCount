@@ -158,9 +158,8 @@ namespace ClientCount.MvvM.ViewModels
                         if (result > 0)
                         {
                             var option = new ToastView("Data updated successfully!");
-                            MessagingCenter.Send("ClientDetails", "UpdateListView", "Success");
+                            MessagingCenter.Send<string>("ClientUpdate", "Updated");
                             await Application.Current.MainPage.DisplayToastAsync(option.ToastOptions());
-
                         }
                       
 
@@ -209,9 +208,9 @@ namespace ClientCount.MvvM.ViewModels
                         int result = clientService.DeleteClient(CurrentClient);
                         if (result > 0)
                         {
-                           
-                            MessagingCenter.Send("ClientDetails", "UpdateListView", "Success");
-                            await App.Navigation.PopAsync();
+                            MessagingCenter.Send("Delete", "Update", "Success");
+                            MessagingCenter.Send("Delete", "UpdateListView", "Success");
+                            await App.Navigation.PopToRootAsync();
                         }
                     }
 

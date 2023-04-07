@@ -21,22 +21,30 @@ namespace ClientCount
         static ClientService clientService = new ClientService();
         static double a = clientService.CountClients();
         static double pages = Math.Ceiling(a/item_on_page);
+        private double update_pages_count()
+        {
+            a = clientService.CountClients();
+            pages = Math.Ceiling(a / item_on_page);
+            return pages;
+        }
         public MainPage()
         {
             InitializeComponent();
+            update_pages_count();
             BindingContext = new ClientsListViewModel(current_page);
             App.Navigation = Navigation;
         }
         protected override void OnAppearing()
         {
             MessagingCenter.Subscribe<string, string>("MainPage", "UpdateListView", (sender, result) => {
-
+                update_pages_count();
                 BindingContext = new ClientsListViewModel(current_page);
             });
             MessagingCenter.Subscribe<List<Client>>(this, "PopUpData", (value) =>
             {
                 BindingContext = new ClientsListViewModel(value);
             });
+        
         }   
         protected override void OnDisappearing()
         {

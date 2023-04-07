@@ -93,8 +93,8 @@ namespace ClientCount.Services
             }
             else if (cur_page >1)
             {
-                int l_r = (cur_page - 1)*5;
-                int r_r = cur_page * 5;
+                int l_r = ((cur_page - 1)*5);
+                int r_r =5;
                 return conn.Query<Client>($"SELECT  id,FirstName||' '||LastName AS firstname,phonenumber FROM Client LIMIT {l_r},{r_r}");
             }
             else
