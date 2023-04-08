@@ -188,8 +188,11 @@ namespace ClientCount
                 var result = await Navigation.ShowPopupAsync(new SearchClientBar("mainpage"));
         }
 
-        private void l_b_Clicked(object sender, EventArgs e)
+        private async void l_b_Clicked(object sender, EventArgs e)
         {
+            await l_b.ScaleTo(0.8,75, Easing.Linear);
+            await Task.Delay(50);
+            await l_b.ScaleTo(1, 75, Easing.Linear);
             if (current_page - 1 != 0)
             {
                 current_page -= 1;
@@ -197,9 +200,12 @@ namespace ClientCount
             }
         }
 
-        private void r_b_Clicked(object sender, EventArgs e)
+        private async void r_b_Clicked(object sender, EventArgs e)
         {
-            if(current_page+1<=pages)
+            await r_b.ScaleTo(0.8, 75, Easing.Linear);
+            await Task.Delay(50);
+            await r_b.ScaleTo(1, 75, Easing.Linear);
+            if (current_page+1<=pages)
             current_page += 1;
             MessagingCenter.Send("NextPage", "UpdateListView", "Success");
         }

@@ -59,13 +59,16 @@
     <ContentPage Title="Model and Brands">
        <StackLayout Orientation="Vertical" >
 
-            <ListView BackgroundColor="Transparent" ItemsSource="{Binding Brands}" HeightRequest="300">
+            <ListView BackgroundColor="Transparent" ItemsSource="{Binding Brands}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Delete" CommandParameter="{Binding .}" Clicked="MenuItem_Clicked"></MenuItem>
+                            </ViewCell.ContextActions>
                             <Frame>
                                 <StackLayout>
-                                    <Label  StyleClass="labellower" Text="{Binding BrandName}"/>
+                                    <Label VerticalOptions="Center" StyleClass="labellower" Text="{Binding BrandName}"/>
                                 </StackLayout>
                             </Frame>
                         </ViewCell>
@@ -73,10 +76,13 @@
                 </ListView.ItemTemplate>
             </ListView>
             <Button Clicked="Button_Clicked_1"/>
-            <ListView BackgroundColor="Transparent" ItemsSource="{Binding Models}"  HeightRequest="300">
+            <ListView BackgroundColor="Transparent" ItemsSource="{Binding Models}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Delete" CommandParameter="{Binding .}" Clicked="MenuItem_Clicked_1"></MenuItem>
+                            </ViewCell.ContextActions>
                             <Frame>
                                 <StackLayout>
                                     <Label StyleClass="labellower" Text="{Binding ModelName}"/>
