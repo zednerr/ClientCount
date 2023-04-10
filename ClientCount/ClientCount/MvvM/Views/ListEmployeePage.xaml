@@ -58,7 +58,7 @@
     </ContentPage>
     <ContentPage Title="Model and Brands">
        <StackLayout Orientation="Vertical" >
-
+            <Label Text="Brands" StyleClass="labelowner" Margin="0,12,0,0" HorizontalOptions="Center"/>
             <ListView BackgroundColor="Transparent" ItemsSource="{Binding Brands}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -75,8 +75,11 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Clicked="Button_Clicked_1"/>
-            <ListView BackgroundColor="Transparent" ItemsSource="{Binding Models}" >
+            <StackLayout Margin="80,0,80,10" Padding="12">
+                <Button Text="Add" BackgroundColor="#F9AA33" WidthRequest="100" HeightRequest="40" CornerRadius="10" Clicked="Button_Clicked_1"/>
+            </StackLayout>
+            <Label Text="Models" StyleClass="labelowner" HorizontalOptions="Center"/>
+                <ListView BackgroundColor="Transparent" ItemsSource="{Binding Models}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -92,7 +95,9 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Clicked="Button_Clicked"/>
+            <StackLayout Margin="80,0,80,10" Padding="12">
+                <Button Text="Add" BackgroundColor="#F9AA33" WidthRequest="100" HeightRequest="40" CornerRadius="10" Clicked="Button_Clicked"/>
+        </StackLayout>
         </StackLayout>
     </ContentPage>
 </TabbedPage>

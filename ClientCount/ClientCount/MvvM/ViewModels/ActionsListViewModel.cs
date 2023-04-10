@@ -126,7 +126,7 @@ namespace ClientCount.MvvM.ViewModels
             var actionsService = new ActionService();
             //actionslist = actionsService.ReadAll();
             List<DopActions> new_list = new List<DopActions>();
-            string date = DateTime.Today.ToString();
+            string date = DateTime.Today.ToString("yyyy-MM-dd");
             var conn = App.DataBase.Connection;
             var list = from client in conn.Table<Client>()
                        from livingPlace in conn.Table<LivingPlace>()

@@ -32,11 +32,5 @@ namespace ClientCount.MvvM.Views
 
 
         }
-        private async void Button_Clicked1(object sender, EventArgs e)
-        {
-            var option = new ToastView("Client updated successfully!");
-            await App.Current.MainPage.DisplayToastAsync(option.ToastOptions());
-
-        }
     }
 }

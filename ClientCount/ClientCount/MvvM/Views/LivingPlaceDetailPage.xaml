@@ -69,7 +69,7 @@
                     </Frame>
                 <Frame StyleClass="frame_add">
                         <StackLayout>
-                        <Label StyleClass="labelowner" Text="Warranty number *" HorizontalOptions="Center"/>
+                        <Label StyleClass="labelowner" Text="Warranty number" HorizontalOptions="Center"/>
                     <Entry Text="{Binding GuaranteeNumber}"/>
                         </StackLayout>
                     </Frame>
@@ -100,7 +100,7 @@
                                     WidthRequest="50"
                          Text="Edit"
                          Command="{Binding UpdateLivingPlaceCommand}"
-                         Clicked="Button_Clicked_1"/>
+                        />
 
                         <Button BackgroundColor="#F9AA33" 
                          TextColor="White"
@@ -111,7 +111,7 @@
                                     WidthRequest="50"
                          Text="Delete"
                             Command="{Binding DeleteLivingPlaceCommand}"
-                            Clicked="Button_Clicked"/>
+                            />
                         <Button BackgroundColor="#F9AA33" 
                          TextColor="White"
                             Grid.Column="2"

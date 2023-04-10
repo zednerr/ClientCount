@@ -12,6 +12,10 @@
         <StackLayout Orientation="Vertical" x:Name="Content_s" HorizontalOptions="Center" BackgroundColor="#344955" xct:CornerRadiusEffect.CornerRadius="20">
             <Label Text="Report" FontFamily="MontserratSemiBold" FontSize="16" TextColor="White"  HorizontalTextAlignment="Center"/>
             <StackLayout HorizontalOptions="Center">
+                <Label Text="report type" FontFamily="MontserratMedium" FontSize="16" TextColor="White"  HorizontalOptions="Center"/>
+                <Picker FontFamily="MontserratMedium" FontSize="16" BackgroundColor="#4A6572" WidthRequest="200" SelectedIndexChanged="picker_type_SelectedIndexChanged" HorizontalTextAlignment="Center"  TextColor="White" x:Name="picker_type" HeightRequest="45" xct:CornerRadiusEffect.CornerRadius="20"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center">
                 <Label Text="Filter" FontFamily="MontserratMedium" FontSize="16" TextColor="White"  HorizontalOptions="Center"/>
                 <Picker FontFamily="MontserratMedium" FontSize="16" BackgroundColor="#4A6572" WidthRequest="200" SelectedIndexChanged="picker_fil_SelectedIndexChanged" HorizontalTextAlignment="Center"  TextColor="White" x:Name="picker_fil" HeightRequest="45" xct:CornerRadiusEffect.CornerRadius="20"/>
         </StackLayout>

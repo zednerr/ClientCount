@@ -24,7 +24,7 @@
                     <Label Text="Date of completion:" StyleClass="labelowner" HorizontalOptions="Center"/>
                     <Frame>
                         <StackLayout>
-                            <DatePicker FontSize="16" FontFamily="MontserratRegular" Date="{Binding DateAction}"/>
+                            <DatePicker FontSize="16" FontFamily="MontserratRegular" Date="{Binding DateAction}" Format="yyyy-MM-dd"/>
                         </StackLayout>
                     </Frame>
                 </StackLayout>

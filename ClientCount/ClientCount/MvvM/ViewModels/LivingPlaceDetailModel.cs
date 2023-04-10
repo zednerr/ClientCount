@@ -7,6 +7,8 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.CommunityToolkit.Extensions;
 using ClientCount.MvvM.Views;
+using DocumentFormat.OpenXml.Wordprocessing;
+using System.Linq;
 
 namespace ClientCount.MvvM.ViewModels
 {
@@ -22,6 +24,17 @@ namespace ClientCount.MvvM.ViewModels
         private string street;
         private int client_id;
         private string flatNumber;
+        public bool CanFormData(params string[] n)
+        {
+            for (int i = 0; i < n.Length; i++)
+            {
+                if (string.IsNullOrEmpty(n[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public string City
         {
             get
@@ -287,6 +300,10 @@ namespace ClientCount.MvvM.ViewModels
                 {
                     try
                     {
+                        if (CanFormData(new string[] { region,city,street,houseNumber,brandName, Convert.ToDateTime(dateSold).ToString("yyyy-MM-dd"), Convert.ToDateTime(dateStartExp).ToString("yyyy-MM-dd"),modelName,serialNumber,typeModel }) == true)
+                        {
+                            throw new NullReferenceException();
+                        }
                         Current_livingPlace.Region = region;
                         Current_livingPlace.City = city;
                         Current_livingPlace.Street = street;
@@ -335,8 +352,11 @@ namespace ClientCount.MvvM.ViewModels
                         int result = lpservice.DeleteLivingPlace(Current_livingPlace);
                         if (result > 0)
                         {
+                            var option = new ToastView("Data deleted successfully!");
                             MessagingCenter.Send("LivingPlaceDetails", "UpdateLivingPlaceView", "Success");
-                            await App.Navigation.PopAsync();
+                            var _last = App.Current.MainPage.Navigation.NavigationStack.Last();
+                            App.Navigation.RemovePage(_last);
+                            await App.Current.MainPage.DisplayToastAsync(option.ToastOptions());
                         }
                         else
                         {
