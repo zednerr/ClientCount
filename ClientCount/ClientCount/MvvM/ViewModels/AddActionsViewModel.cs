@@ -128,7 +128,7 @@ namespace ClientCount.MvvM.ViewModels
                         int result = actionsService.CreateAction(new Actions
                         {
                             ActionType = actionType,
-                            DateAction = dateAction,
+                            DateAction = Convert.ToDateTime(dateAction).ToString("yyyy-MM-dd"),
                             Employee_id = SelectedEmployee.Id,
                             LivingPlace_id = livingplace_id
 

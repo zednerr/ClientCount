@@ -30,7 +30,7 @@
                     <Label Text="Tasks" TextColor="White" StyleClass="labelowner" FontSize="15" VerticalOptions="Center"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal"  Margin="10,9,10,35">
-            <Image Source="label4.png" HeightRequest="32" WidthRequest="32"/>
+                <ImageButton Source="label4.png" BackgroundColor="Transparent" Command="{Binding AnalyticsCommand}" Clicked="ImageButton_Clicked" HeightRequest="32" WidthRequest="32"/>
                 <Label Text="Analytics" TextColor="White" StyleClass="labelowner" FontSize="15" VerticalOptions="Center"/>
         </StackLayout>
         </StackLayout>

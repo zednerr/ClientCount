@@ -11,6 +11,13 @@ namespace ClientCount.Services
 {
     public class ClientService
     {
+        public int CountClients()
+        {
+            var conn = App.DataBase.Connection;
+
+         int a =  conn.Query<Client>("Select id from client").Count();
+            return a;
+        }
 
         public int CreateClient(Client client)
         {
@@ -75,6 +82,25 @@ namespace ClientCount.Services
             //return conn.Table<Client>().ToList();
 
             return conn.Query<Client>("SELECT  id,FirstName||' '||LastName AS firstname,phonenumber FROM Client");
+        }
+        public List<Client> ReadAllClientsOnPage(int cur_page)
+        {
+            var conn = App.DataBase.Connection;
+            //return conn.Table<Client>().ToList();
+            if (cur_page == 1)
+            {
+                return conn.Query<Client>("SELECT  id,FirstName||' '||LastName AS firstname,phonenumber FROM Client LIMIT 5");
+            }
+            else if (cur_page >1)
+            {
+                int l_r = ((cur_page - 1)*5);
+                int r_r =5;
+                return conn.Query<Client>($"SELECT  id,FirstName||' '||LastName AS firstname,phonenumber FROM Client LIMIT {l_r},{r_r}");
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

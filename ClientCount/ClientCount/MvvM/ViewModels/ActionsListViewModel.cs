@@ -1,12 +1,14 @@
 ﻿using ClientCount.Models;
 using ClientCount.MvvM.Views;
 using ClientCount.Services;
+using DocumentFormat.OpenXml.Drawing.Charts;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -118,15 +120,13 @@ namespace ClientCount.MvvM.ViewModels
                 return actionsdoplist;
             }
         }
-    
-
 
         public ActionsListViewModel()
         {
             var actionsService = new ActionService();
             //actionslist = actionsService.ReadAll();
             List<DopActions> new_list = new List<DopActions>();
-            string date = DateTime.Today.ToString();
+            string date = DateTime.Today.ToString("yyyy-MM-dd");
             var conn = App.DataBase.Connection;
             var list = from client in conn.Table<Client>()
                        from livingPlace in conn.Table<LivingPlace>()

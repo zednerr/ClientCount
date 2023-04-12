@@ -1,4 +1,5 @@
-﻿using ClientCount.Models;
+﻿using Android.Provider;
+using ClientCount.Models;
 using ClientCount.MvvM.Views;
 using ClientCount.Services;
 using System;
@@ -49,58 +50,14 @@ namespace ClientCount.MvvM.ViewModels
                 return _selectedItem;
             }
         }
-     
         public ICommand AddClientCommand
         {
             get
             {
                 return new Command(async () =>
                 {
-                    
+
                     await App.Navigation.PushAsync(new NavigationPage(new AddClientPage()));
-                });
-            }
-        }
-        public ICommand ActionsViewCommand
-        {
-            get
-            {
-                return new Command(async () =>
-                {
-                   
-                    await App.Navigation.PushAsync(new NavigationPage(new ActionViewPage()));
-                });
-            }
-        }
-        public ICommand EmployeeListCommand
-        {
-            get
-            {
-                return new Command(async () =>
-                {
-
-                    await App.Navigation.PushAsync(new NavigationPage(new ListEmployeePage()));
-                });
-            }
-        }
-        public ICommand ReportCommand
-        {
-            get
-            {
-                return new Command(() =>
-                {
-                   App.Navigation.ShowPopup(new ReportDetailPage());
-                });
-            }
-        }
-
-        public ICommand ListClientCommand
-        {
-            get
-            {
-                return new Command(() =>
-                {
-                    App.Navigation.PopToRootAsync();
                 });
             }
         }
@@ -108,11 +65,14 @@ namespace ClientCount.MvvM.ViewModels
         {
             App.Navigation.PushAsync(new NavigationPage(new ClientDetailPage(client)));
         }
-
-        public ClientsListViewModel()
+        public ClientsListViewModel(int cur_page)
         {
             var clientService = new ClientService();
-            Clients = clientService.ReadAllClientsforview();
+            Clients = clientService.ReadAllClientsOnPage(cur_page);
+        }
+        public ClientsListViewModel(List<Client> clients)
+        {
+            Clients = clients;
         }
 
     }

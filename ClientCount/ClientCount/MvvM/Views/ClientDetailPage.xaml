@@ -67,7 +67,7 @@
                     </StackLayout>
                 </Frame>
                 <Frame StyleClass="frame_add">
-                    <StackLayout>
+                    <StackLayout Opacity="0.8">
                         <Label StyleClass="labelowner"  Text="Employee *" HorizontalOptions="Center"
                                       />
                         <Entry Placeholder="Employee" Text="{Binding Employee}" IsReadOnly="True"/>
@@ -89,8 +89,7 @@
                          Text="Edit"
                          Grid.Column="0"
                          Command="{Binding UpdateClientCommand}"
-                         CommandParameter="{Binding FirstName}"
-                                 Clicked="Button_Clicked1"/>
+                         CommandParameter="{Binding FirstName}" />
 
                         <Button BackgroundColor="#F9AA33" 
                          TextColor="White"

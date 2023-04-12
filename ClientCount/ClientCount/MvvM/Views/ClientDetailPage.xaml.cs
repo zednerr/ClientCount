@@ -22,7 +22,7 @@ namespace ClientCount.MvvM.Views
 
 		private void Button_Clicked(object sender, EventArgs e)
 		{
-			MessagingCenter.Subscribe<string, string>("ClientDetails", "UpdateListView", async (sen, result) =>
+			MessagingCenter.Subscribe<string, string>("ClientDetails", "Update", async (sen, result) =>
 			{
                 var option = new ToastView("Client deleted successfully!");
                 await App.Current.MainPage.DisplayToastAsync(option.ToastOptions());
@@ -30,12 +30,6 @@ namespace ClientCount.MvvM.Views
 
             MessagingCenter.Unsubscribe<string>("ClientDetails", "UpdateListView");
 
-
-        }
-        private async void Button_Clicked1(object sender, EventArgs e)
-        {
-            var option = new ToastView("Client updated successfully!");
-            await App.Current.MainPage.DisplayToastAsync(option.ToastOptions());
 
         }
     }

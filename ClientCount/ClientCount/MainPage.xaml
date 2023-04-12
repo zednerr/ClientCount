@@ -9,29 +9,33 @@
             <StyleSheet Source="/Assets/Styles.css" />
         </ResourceDictionary>
     </ContentPage.Resources>
-
-    <StackLayout Spacing="0" BackgroundColor="#F3F3F2">
-        <ListView x:Name="SearchResult" ItemsSource="{Binding Clients}"
+    <ContentPage.Content>
+        <StackLayout Spacing="0" BackgroundColor="#F3F3F2">
+            <ListView x:Name="SearchResult" ItemsSource="{Binding Clients}"
                   SeparatorVisibility="None" 
                   HasUnevenRows="True"
                   SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Frame StyleClass="framestyle" BackgroundColor="White">
-                            <StackLayout>
-                                <Label StyleClass="labelowner"  Text="Client" />
-                                <Label StyleClass="labellower" Text="{Binding FirstName}"/>
-                                <Label StyleClass="labelowner"  Text="Mobile number"/>
-                                <Label StyleClass="labellower"  Text="{Binding PhoneNumber}"/>
-                            </StackLayout>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame StyleClass="framestyle" BackgroundColor="White">
+                                <StackLayout>
+                                    <Label StyleClass="labelowner"  Text="Client" />
+                                    <Label StyleClass="labellower" Text="{Binding FirstName}"/>
+                                    <Label StyleClass="labelowner"  Text="Mobile number"/>
+                                    <Label StyleClass="labellower"  Text="{Binding PhoneNumber}"/>
+                                </StackLayout>
 
-                        </Frame>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <RelativeLayout HeightRequest="90"  BackgroundColor="Transparent">
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" BackgroundColor="Transparent">
+                <ImageButton Margin="0,0,15,0" HeightRequest="48" Source="arrowleft.png" BackgroundColor="Transparent"   WidthRequest="48" x:Name="l_b" Clicked="l_b_Clicked"/>
+                <ImageButton Margin="15,0,0,0" HeightRequest="48" Source="arrowright.png" BackgroundColor="Transparent"  WidthRequest="48" x:Name="r_b" Clicked="r_b_Clicked"/>
+            </StackLayout>
+            <RelativeLayout HeightRequest="90"  BackgroundColor="Transparent">
             <BoxView Color="#4A6572" HeightRequest="60" x:Name="arrowme"
                          RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
                          RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y,Constant=30}"/>
@@ -58,4 +62,5 @@
         </RelativeLayout>
 
     </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

@@ -48,6 +48,19 @@ namespace ClientCount.MvvM.ViewModels
                 return employee;
             }
         }
+
+        public bool CanFormData(params string[] n)
+        {
+            for (int i = 0; i < n.Length; i++)
+            {
+                if (string.IsNullOrEmpty(n[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public string FirstName
         {
             set
@@ -147,31 +160,35 @@ namespace ClientCount.MvvM.ViewModels
                 {
                     try
                     {
+                        if (CanFormData(new string[] { firstName, lastName, phoneNumber }) == true)
+                        {
+                            throw new NullReferenceException();
+                        }
                         CurrentClient.FirstName = firstName;
                         CurrentClient.LastName = lastName;
                         CurrentClient.Patronymic = patronymic;
                         CurrentClient.PhoneNumber = phoneNumber;
                         CurrentClient.HphoneNumber = hphoneNumber;
 
+
                         int result = clientService.UpdateClient(CurrentClient);
 
                         if (result > 0)
                         {
                             var option = new ToastView("Data updated successfully!");
-                            MessagingCenter.Send("ClientDetails", "UpdateListView", "Success");
-                            await App.Current.MainPage.DisplayToastAsync(option.ToastOptions());
-
+                            MessagingCenter.Send("Update", "UpdateListView", "Success");
+                            await Application.Current.MainPage.DisplayToastAsync(option.ToastOptions());
                         }
                       
 
                     }
                     catch (NullReferenceException) 
                     {
-                        await App.Current.MainPage.DisplayAlert("Error", "Fill in the blanks!", "Ok");
+                        await Application.Current.MainPage.DisplayAlert("Error", "Fill in the blanks!", "Ok");
                     }
                     catch (SQLite.NotNullConstraintViolationException)
                     {
-                        await App.Current.MainPage.DisplayAlert("Error", "Fill in the blanks!", "Ok");
+                        await Application.Current.MainPage.DisplayAlert("Error", "Fill in the blanks!", "Ok");
                     }
                 });
 
@@ -209,9 +226,9 @@ namespace ClientCount.MvvM.ViewModels
                         int result = clientService.DeleteClient(CurrentClient);
                         if (result > 0)
                         {
-                           
-                            MessagingCenter.Send("ClientDetails", "UpdateListView", "Success");
-                            await App.Navigation.PopAsync();
+                            MessagingCenter.Send("Delete", "Update", "Success");
+                            MessagingCenter.Send("Delete", "UpdateListView", "Success");
+                            await App.Navigation.PopToRootAsync();
                         }
                     }
 

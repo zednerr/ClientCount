@@ -280,7 +280,7 @@ namespace ClientCount.MvvM.ViewModels.client
 
                     try
                     {
-                        if (CanFormData(new string[] { city, houseNumber,Region,street,brandName,guaranteeNumber,dateStartExp,serialNumber,typeModel,client_id.ToString() }) == true)
+                        if (CanFormData(new string[] { city, houseNumber,Region,street,brandName,modelName,dateStartExp,serialNumber,typeModel,client_id.ToString() }) == true)
                         {
                             throw new NullReferenceException();
                         }

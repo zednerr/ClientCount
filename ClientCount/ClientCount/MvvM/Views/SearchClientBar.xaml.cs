@@ -19,7 +19,8 @@ namespace ClientCount.MvvM.Views
         public SearchClientBar(string page)
         {
             InitializeComponent();
-             _page = page;
+            _page = page;
+
             switch (page)
             {
                 case "listemployeepage":
@@ -63,9 +64,11 @@ namespace ClientCount.MvvM.Views
                     MessagingCenter.Send(new SearchResult() { ReturnData_Employee = list1 }, "PopUpData");
                     break;
                 case "mainpage":
-                
-                    var list2 = conn.Query<Client>($"Select id,firstname||' '||lastname as firstname,phonenumber from client where firstname||lastname||phonenumber LIKE '%{bar_search.Text}%'");
-                    MessagingCenter.Send(new SearchResult() { ReturnData_Client = list2 }, "PopUpData");
+
+                 var list2 = conn.Query<Client>($"Select id,firstname||' '||lastname as firstname,phonenumber from client where firstname||lastname||phonenumber LIKE '%{bar_search.Text}%'");
+                 MessagingCenter.Send(list2, "PopUpData");
+                 
+              
                     break;
                 case "listlivingplaceview":
                 

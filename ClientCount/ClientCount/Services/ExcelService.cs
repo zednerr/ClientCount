@@ -21,6 +21,7 @@ namespace ClientCount.Services
                   DataType = new EnumValue<CellValues>(dataTypes)
               };
 
+        [Obsolete]
         public string GenerateExcel(String fileName)
         {
             Environment.SetEnvironmentVariable("MONO_URI_DOTNETRELATIVEORABSOLUTE", "true");

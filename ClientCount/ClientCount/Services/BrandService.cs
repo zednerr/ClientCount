@@ -18,11 +18,12 @@ namespace ClientCount.Services
             var conn = App.DataBase.Connection;
             return conn.Update(brand);
         }
-        public int DeleteBrand(Brand brand)
+        public int DeleteBrand(string brand)
         {
             var conn = App.DataBase.Connection;
 
-            return conn.Delete(brand);
+            return conn.Delete<Brand>(brand);
+            
         }
         public List<Brand> GetAllBrands()
         {

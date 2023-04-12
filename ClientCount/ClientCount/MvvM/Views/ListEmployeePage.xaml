@@ -57,12 +57,47 @@
     </StackLayout>
     </ContentPage>
     <ContentPage Title="Model and Brands">
-        <!--<StackLayout>
-            <ListView>
+       <StackLayout Orientation="Vertical" >
+            <Label Text="Brands" StyleClass="labelowner" Margin="0,12,0,0" HorizontalOptions="Center"/>
+            <ListView BackgroundColor="Transparent" ItemsSource="{Binding Brands}" >
                 <ListView.ItemTemplate>
-                    
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Delete" CommandParameter="{Binding .}" Clicked="MenuItem_Clicked"></MenuItem>
+                            </ViewCell.ContextActions>
+                            <Frame>
+                                <StackLayout>
+                                    <Label VerticalOptions="Center" StyleClass="labellower" Text="{Binding BrandName}"/>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>-->
+            <StackLayout Margin="80,0,80,10" Padding="12">
+                <Button Text="Add" BackgroundColor="#F9AA33" WidthRequest="100" HeightRequest="40" CornerRadius="10" Clicked="Button_Clicked_1"/>
+            </StackLayout>
+            <Label Text="Models" StyleClass="labelowner" HorizontalOptions="Center"/>
+                <ListView BackgroundColor="Transparent" ItemsSource="{Binding Models}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Delete" CommandParameter="{Binding .}" Clicked="MenuItem_Clicked_1"></MenuItem>
+                            </ViewCell.ContextActions>
+                            <Frame>
+                                <StackLayout>
+                                    <Label StyleClass="labellower" Text="{Binding ModelName}"/>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Margin="80,0,80,10" Padding="12">
+                <Button Text="Add" BackgroundColor="#F9AA33" WidthRequest="100" HeightRequest="40" CornerRadius="10" Clicked="Button_Clicked"/>
+        </StackLayout>
+        </StackLayout>
     </ContentPage>
 </TabbedPage>

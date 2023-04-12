@@ -10,27 +10,41 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using Path = System.IO.Path;
 using Xamarin.CommunityToolkit.Extensions;
+using Android.Views.Accessibility;
 
 namespace ClientCount
 {
     public partial class MainPage : ContentPage
     {
+        public int current_page = 1;
+        static int item_on_page = 5;
+        static ClientService clientService = new ClientService();
+        static double a = clientService.CountClients();
+        static double pages = Math.Ceiling(a/item_on_page);
+        private double update_pages_count()
+        {
+            a = clientService.CountClients();
+            pages = Math.Ceiling(a / item_on_page);
+            return pages;
+        }
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new ClientsListViewModel();
+            update_pages_count();
+            BindingContext = new ClientsListViewModel(current_page);
             App.Navigation = Navigation;
         }
         protected override void OnAppearing()
         {
             MessagingCenter.Subscribe<string, string>("MainPage", "UpdateListView", (sender, result) => {
-
-                BindingContext = new ClientsListViewModel();
+                update_pages_count();
+                BindingContext = new ClientsListViewModel(current_page);
             });
-            MessagingCenter.Subscribe<SearchResult>(this, "PopUpData", (value) =>
+            MessagingCenter.Subscribe<List<Client>>(this, "PopUpData", (value) =>
             {
-                SearchResult.ItemsSource = value.ReturnData_Client;
+                BindingContext = new ClientsListViewModel(value);
             });
+        
         }   
         protected override void OnDisappearing()
         {
@@ -174,5 +188,26 @@ namespace ClientCount
                 var result = await Navigation.ShowPopupAsync(new SearchClientBar("mainpage"));
         }
 
+        private async void l_b_Clicked(object sender, EventArgs e)
+        {
+            await l_b.ScaleTo(0.8,75, Easing.Linear);
+            await Task.Delay(50);
+            await l_b.ScaleTo(1, 75, Easing.Linear);
+            if (current_page - 1 != 0)
+            {
+                current_page -= 1;
+                MessagingCenter.Send("PrevPage", "UpdateListView", "Success");
+            }
+        }
+
+        private async void r_b_Clicked(object sender, EventArgs e)
+        {
+            await r_b.ScaleTo(0.8, 75, Easing.Linear);
+            await Task.Delay(50);
+            await r_b.ScaleTo(1, 75, Easing.Linear);
+            if (current_page+1<=pages)
+            current_page += 1;
+            MessagingCenter.Send("NextPage", "UpdateListView", "Success");
+        }
     }
 }
