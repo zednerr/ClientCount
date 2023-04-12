@@ -124,7 +124,7 @@ namespace ClientCount.MvvM.ViewModels
                         });
                         if (result > 0)
                         {
-                            MessagingCenter.Send("AddEmployee", "UpdateListView", "Success");
+                            MessagingCenter.Send("AddEmployee", "ListView", "Success");
                             await App.Navigation.PopAsync();
                             var option = new ToastView("Employee added!");
                             await App.Current.MainPage.DisplayToastAsync(option.ToastOptions());

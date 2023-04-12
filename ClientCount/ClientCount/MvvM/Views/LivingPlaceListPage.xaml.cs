@@ -48,9 +48,14 @@ namespace ClientCount.MvvM.Views
             var result = await Navigation.ShowPopupAsync(new SearchClientBar("listlivingplaceview",current_client));
         }
 
-        private void notetextanim_Clicked(object sender, EventArgs e)
+        private async void notetextanim_Clicked(object sender, EventArgs e)
         {
-
+            await notetextanim.ScaleTo(0.8, 150, Easing.Linear);
+            await arrowanim.RelRotateTo(-180, 150);
+            await Task.Delay(250);
+            await arrowanim.RelRotateTo(180, 150);
+            await notetextanim.ScaleTo(1, 150, Easing.Linear);
+            var result = await Navigation.ShowPopupAsync(new PopUpMenu());
         }
     }
 }

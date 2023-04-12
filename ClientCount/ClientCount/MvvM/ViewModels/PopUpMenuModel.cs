@@ -54,5 +54,15 @@ namespace ClientCount.MvvM.ViewModels
                 });
             }
         }
+        public ICommand AnalyticsCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    App.Navigation.PushAsync(new NavigationPage(new Analytics()));
+                });
+            }
+        }
     }
 }

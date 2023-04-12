@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClientCount.MvvM.Views.Analytics"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms;assembly=Microcharts.Forms"
+             Title="Analytics">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <StyleSheet Source="/Assets/Styles.css" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Margin="10,15,10,15" BackgroundColor="Transparent">
+                <Frame CornerRadius="5">
+                    <StackLayout>
+                        <Label Text="Value graph" StyleClass="labelowner" HorizontalOptions="Center"/>
+                        <forms:ChartView x:Name="Base_Chart" HeightRequest="300" WidthRequest="300"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Frame CornerRadius="15">
+                    <StackLayout>
+                        <Label Text="Type" StyleClass="labelowner" HorizontalOptions="Center"/>
+                    <Picker x:Name="SourceSel" WidthRequest="120" FontFamily="MontserratRegular" HorizontalTextAlignment="Center" HeightRequest="45" SelectedIndexChanged="SourceSel_SelectedIndexChanged"/>
+                    </StackLayout>
+                </Frame>
+                <Frame CornerRadius="15">
+                    <StackLayout>
+                        <Label Text="Sampling date" StyleClass="labelowner" HorizontalOptions="Center"/>
+                        <Picker x:Name="TimeLine" WidthRequest="175" FontFamily="MontserratRegular" HorizontalTextAlignment="Center" HeightRequest="45" SelectedIndexChanged="TimeLine_SelectedIndexChanged"/>
+                    </StackLayout>
+                </Frame>
+                </StackLayout>
+            <RelativeLayout HeightRequest="90"  BackgroundColor="Transparent" VerticalOptions="EndAndExpand">
+                <BoxView Color="#4A6572" HeightRequest="60" x:Name="arrowme"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y,Constant=30}"/>
+               
+                <Grid BackgroundColor="Transparent" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0.5,Constant=-20}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y,Constant=45}">
+                    <Image x:Name="arrowanim" Source="arrowwhite.png" HeightRequest="24" WidthRequest="24" Grid.Column="0" Grid.Row="0"/>
+                    <ImageButton x:Name="notetextanim" Source="notetext.png" HeightRequest="24" WidthRequest="24" Grid.Column="1" Grid.Row="0" Clicked="notetextanim_Clicked"  BackgroundColor="Transparent"/>
+                </Grid>
+            </RelativeLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
